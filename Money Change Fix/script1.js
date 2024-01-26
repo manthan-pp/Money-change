@@ -33,6 +33,9 @@ function calculateChange() {
       (parseInt(givenAmount) - parseInt(totalAmount));
     document.getElementById("changeResult").innerText = result.join("\n");
   }
+  //empty totalAmount and givenAmount field.
+  document.getElementById("totalAmount").value = "";
+  document.getElementById("givenAmount").value = "";
 }
 
 function dynamicProgramming(rows, change) {
@@ -73,11 +76,11 @@ function dynamicProgramming(rows, change) {
         if (updatedQuantity <= 0) {
           table.deleteRow(i);
           i--;
-          alert("Inefficient quantity of " + currency + " currency.");
+          // alert("Inefficient quantity of " + currency + " currency.");
         }
-       
         break;
       }
+
 
       // Remove the row if the quantity zero
     }
@@ -88,6 +91,11 @@ function dynamicProgramming(rows, change) {
     //   i--;
     //   alert("Inefficient quantity of " + currency + " currency.");
     // }
+  }
+
+  if (remainingChange > 0) {
+    result = [];
+    alert("Insufficient change/balance. Please provide exact change.");
   }
 
   return result;
