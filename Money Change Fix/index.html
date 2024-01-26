@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Change Calculator</title>
+    <script src="script.js" defer></script>
+  <script src="script1.js" defer></script>
+  </head>
+  <body>
+    <label for="currencyInput">Currency:</label>
+    <input type="number" id="currencyInput" />
+
+    <label for="quantityInput">Quantity:</label>
+    <input type="number" id="quantityInput" />
+
+    <button onclick="addItem()" id="btn-add">Add</button>
+
+    <br />
+
+    <table id="table">
+      <tr>
+        <th>Currency</th>
+        <th>Quantity</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </table>
+
+    <br />
+
+    <label for="totalAmount">Total Amount:</label>
+    <input type="number" id="totalAmount" />
+
+    <label for="givenAmount">Given Amount:</label>
+    <input type="number" id="givenAmount" />
+
+    <button id="btn-change" onclick="calculateChange()">
+      Calculate Change
+    </button>
+
+    <p id="c-value"></p>
+    <p id="changeResult"></p>
+
+    
+  </body>
+</html>
