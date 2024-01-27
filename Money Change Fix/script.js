@@ -21,8 +21,8 @@ function addItem() {
     currencyCell.innerHTML = currency;
     quantityCell.innerHTML = quantity;
 
-    editCell.innerHTML = `<button class="edit" onclick="editEntry(${newRow.rowIndex});">Edit</button>`;
-    deleteCell.innerHTML = `<button class="delete" onclick="deleteEntry(${newRow.rowIndex})">Delete</button>`;
+    editCell.innerHTML = `<button class="edit" onclick="editEntry(event);">Edit</button>`;
+    deleteCell.innerHTML = `<button class="delete" onclick="deleteEntry(event)">Delete</button>`;
   } else {
     dataTable.rows[selectedRowIndex].cells[0].innerHTML = currency;
     dataTable.rows[selectedRowIndex].cells[1].innerHTML = quantity;
@@ -34,7 +34,8 @@ function addItem() {
   document.getElementById("quantityInput").value = "";
 }
 
-function editEntry(rowIndex) {
+function editEntry(e) {
+  let rowIndex = e.target.parentElement.parentElement.rowIndex;
   const dataTable = document.getElementById("table");
   const currencyInput = document.getElementById("currencyInput");
   const quantityInput = document.getElementById("quantityInput");
@@ -47,7 +48,8 @@ function editEntry(rowIndex) {
   document.getElementsByTagName("button")[0].innerText = "Update";
 }
 
-function deleteEntry(rowIndex) {
+function deleteEntry(e) {
+  let rowIndex = e.target.parentElement.parentElement.rowIndex;
   const dataTable = document.getElementById("table");
   dataTable.deleteRow(rowIndex);
 }

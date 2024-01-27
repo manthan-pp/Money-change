@@ -12,7 +12,6 @@ function calculateChange() {
       .getElementsByTagName("tbody")[0]
       .getElementsByTagName("tr");
 
-    
     let result = dynamicProgramming(
       rows,
       parseInt(givenAmount) - parseInt(totalAmount)
@@ -27,10 +26,8 @@ function calculateChange() {
     //   i--;
     //   alert("Inefficient quantity of " +currency+ " currency.");
     // }
-    
-    document.getElementById("c-value").innerHTML =
-      "Return Amount Change: " +
-      (parseInt(givenAmount) - parseInt(totalAmount));
+
+    // document.getElementById("c-value").innerHTML = "Return Amount Change: " +(parseInt(givenAmount) - parseInt(totalAmount));
     document.getElementById("changeResult").innerText = result.join("\n");
   }
   //empty totalAmount and givenAmount field.
@@ -53,9 +50,16 @@ function dynamicProgramming(rows, change) {
       }
     }
   }
+  console.log(dp[change]);
+
 
   let result = [];
   let remainingChange = change;
+
+  let quantities = new Array(rows.length).fill(0);
+  for(let i = 1; i < rows.length; i++) {
+    quantities[i] = Number(rows[i].getElementsByTagName("td")[1].innerText);
+  }
 
   for (let i = rows.length - 1; i >= 1; i--) {
     let cells = rows[i].getElementsByTagName("td");
@@ -81,7 +85,6 @@ function dynamicProgramming(rows, change) {
         break;
       }
 
-
       // Remove the row if the quantity zero
     }
     // let updatedQuantity = quantity - remainingChange;
@@ -92,9 +95,13 @@ function dynamicProgramming(rows, change) {
     //   alert("Inefficient quantity of " + currency + " currency.");
     // }
   }
-
   if (remainingChange > 0) {
     result = [];
+    // document.getElementById("table").replaceChild = tBody;
+    for(let i = 1; i < rows.length; i++) {
+      rows[i].getElementsByTagName("td")[1].innerText = quantities[i];
+      // quantities[i] = Number(rows[i].getElementsByTagName("td")[1]);
+    }
     alert("Insufficient change/balance. Please provide exact change.");
   }
 
